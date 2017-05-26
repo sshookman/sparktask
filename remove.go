@@ -5,15 +5,15 @@ import (
     "strconv"
 )
 
-func remove(todos []Todo, id string) {
+func remove(tasks []Task, id string) {
     index, _ := strconv.Atoi(id)
 
-    var remaining []Todo
-    for _, todo := range todos {
-        if todo.ID == index {
-            fmt.Println("Removed:", todo.Title)
+    var remaining []Task
+    for _, task := range tasks {
+        if task.ID == index {
+            fmt.Println("Removed:", task.Title)
         } else {
-            remaining = append(remaining, todo)
+            remaining = append(remaining, task)
         }
     }
 

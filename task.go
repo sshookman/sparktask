@@ -8,7 +8,7 @@ import (
     "encoding/json"
 )
 
-type Todo struct {
+type Task struct {
     ID        int    `json:"id"`
     Title     string `json:"title"`
     Completed bool   `json:"completed"`
@@ -16,7 +16,7 @@ type Todo struct {
 }
 
 
-func load() (todos []Todo) {
+func load() (todos []Task) {
 
     raw, err := ioutil.ReadFile("/root/.todos.json")
     if err != nil && strings.Contains(err.Error(), "no such file") {
@@ -39,7 +39,7 @@ func load() (todos []Todo) {
     return
 }
 
-func save(todos []Todo) {
+func save(todos []Task) {
     raw, err := json.Marshal(todos)
 
     ioutil.WriteFile("/root/.todos.json", raw, 0644)

@@ -4,21 +4,21 @@ import (
     "fmt"
 )
 
-func list(todos []Todo, project string) {
-    if len(todos) == 0 {
+func list(tasks []Task, project string) {
+    if len(tasks) == 0 {
         fmt.Println("Your TODO list is empty!")
-        fmt.Println("Use \"todo add {title}\" to add new items")
+        fmt.Println("Use \"task add {title}\" to add new items")
     } else {
         fmt.Println("~~~~~~~~~~~~~~SPARK~TASKS~~~~~~~~~~~~~~")
     }
 
-    for _, todo := range todos {
-        if project == "" || todo.Project == project {
+    for _, task := range tasks {
+        if project == "" || task.Project == project {
             checked := "[ ] "
-            if todo.Completed {
+            if task.Completed {
                 checked = "[X] "
             }
-            fmt.Print(checked, todo.ID, ": ", todo.Title, " <", todo.Project, "> ", "\n")
+            fmt.Print(checked, task.ID, ": ", task.Title, " <", task.Project, "> ", "\n")
         }
     }
 }

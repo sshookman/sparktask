@@ -1,20 +1,20 @@
 package main
 
-func add(todos []Todo, title, project string) {
-    index := getCurrentIndex(todos) + 1
-    todo := Todo{index, title, false, project}
-    todos = append(todos, todo)
+func add(tasks []Task, title, project string) {
+    index := getCurrentIndex(tasks) + 1
+    task := Task{index, title, false, project}
+    tasks = append(tasks, task)
 
-    save(todos)
-    list(todos, project)
+    save(tasks)
+    list(tasks, project)
 }
 
-func getCurrentIndex(todos []Todo) (index int) {
+func getCurrentIndex(tasks []Task) (index int) {
 
     index = 0
-    for _, todo := range todos {
-        if index < todo.ID {
-            index = todo.ID
+    for _, task := range tasks {
+        if index < task.ID {
+            index = task.ID
         }
     }
 

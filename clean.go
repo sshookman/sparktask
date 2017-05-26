@@ -4,15 +4,15 @@ import (
     "fmt"
 )
 
-func clean(todos []Todo, project string) {
+func clean(tasks []Task, project string) {
 
-    var open []Todo
-    for _, todo := range todos {
-        if project == "" || todo.Project == project {
-            if todo.Completed {
-                fmt.Println("Removed:", todo.Title)
+    var open []Task
+    for _, task := range tasks {
+        if project == "" || task.Project == project {
+            if task.Completed {
+                fmt.Println("Removed:", task.Title)
             } else {
-                open = append(open, todo)
+                open = append(open, task)
             }
         }
     }

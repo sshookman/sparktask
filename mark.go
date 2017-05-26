@@ -4,15 +4,15 @@ import (
     "strconv"
 )
 
-func mark(todos []Todo, id string) {
+func mark(tasks []Task, id string) {
     index, _ := strconv.Atoi(id)
 
-    for i, todo := range todos {
-        if todo.ID == index {
-            todos[i].Completed = !todo.Completed
+    for i, task := range tasks {
+        if task.ID == index {
+            tasks[i].Completed = !task.Completed
         }
     }
 
-    save(todos)
-    list(todos, "")
+    save(tasks)
+    list(tasks, "")
 }
