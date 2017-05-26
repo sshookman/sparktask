@@ -9,7 +9,7 @@ func list(todos []Todo, project string) {
         fmt.Println("Your TODO list is empty!")
         fmt.Println("Use \"todo add {title}\" to add new items")
     } else {
-        fmt.Println("~~~~~~~~~~~~~~TODO~~~~~~~~~~~~~~")
+        fmt.Println("~~~~~~~~~~~~~~SPARK~TASKS~~~~~~~~~~~~~~")
     }
 
     for _, todo := range todos {
