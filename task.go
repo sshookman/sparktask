@@ -2,6 +2,7 @@ package main
 
 import (
     "os"
+    "os/user"
     "fmt"
     "strings"
     "io/ioutil"
@@ -17,8 +18,9 @@ type Task struct {
 
 
 func load() (todos []Task) {
-
-    raw, err := ioutil.ReadFile("/root/.todos.json")
+    usr, _ := user.Current()
+    filename := usr.HomeDir + "/.todos.json"
+    raw, err := ioutil.ReadFile(filename)
     if err != nil && strings.Contains(err.Error(), "no such file") {
 
         raw, err = json.Marshal("[]")
@@ -27,7 +29,7 @@ func load() (todos []Task) {
             os.Exit(1)
         }
 
-        err = ioutil.WriteFile("/root/.todos.json", raw, 0644)
+        err = ioutil.WriteFile(filename, raw, 0644)
     }
 
     if err != nil {
@@ -40,9 +42,11 @@ func load() (todos []Task) {
 }
 
 func save(todos []Task) {
+    usr, _ := user.Current()
+    filename := usr.HomeDir + "/.todos.json"
     raw, err := json.Marshal(todos)
 
-    ioutil.WriteFile("/root/.todos.json", raw, 0644)
+    ioutil.WriteFile(filename, raw, 0644)
     if err != nil {
         fmt.Println(err.Error())
         os.Exit(1)
